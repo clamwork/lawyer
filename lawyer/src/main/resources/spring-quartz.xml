@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 定时服务定义 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<!-- 自动启动 -->
+		<property name="autoStartup">
+			<value>true</value>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="quartzWorkTriggerBean" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- ******** 定时控制 开始 ******** -->
+	<bean id="quartzWorkTriggerBean"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="quartzWork" />
+		</property>
+
+		<!-- 整点开始，每间隔一小时执行 -->
+		<property name="cronExpression">
+			<value>0 0 * * * ?</value>
+		</property>
+	</bean>
+
+	<bean id="quartzWork"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 执行batch的执行抽象父类 -->
+		<property name="targetObject" ref="quartzJob"></property>
+		<!-- 执行batch的执行方法 -->
+		<property name="targetMethod" value="work"></property>
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="quartzJob" class="cn.com.jandar.lawyer.quartz.QuartzJob"></bean>
+	<!-- ******** 预警控制 结束 ******** -->
+</beans>
