@@ -58,7 +58,7 @@
 	<!-- /container -->
 
 	<script type="text/javascript"
-		src="<%=basePath%>js/jquery-1.8.2.min.js"></script>
+		src="<%=basePath%>js/jquery-1.10.4.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/md5.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/login.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
