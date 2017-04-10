@@ -23,7 +23,7 @@
 
 		<!-- 整点开始，每间隔一小时执行 -->
 		<property name="cronExpression">
-			<value>0 0 * * * ?</value>
+			<value>0 2 * * * ?</value>
 		</property>
 	</bean>
 

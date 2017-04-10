@@ -6,10 +6,10 @@ import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
-import com.lenchy.lms.service.ws.ILawyerDataService;
-import com.lenchy.lms.service.ws.LawFirm;
-import com.lenchy.lms.service.ws.Lawyer;
-import com.lenchy.lms.service.ws.LawyerDataServiceServiceLocator;
+import com.lenchy.lms.service.ws2.ILawyerPassDataService;
+import com.lenchy.lms.service.ws2.LawFirm;
+import com.lenchy.lms.service.ws2.Lawyer;
+import com.lenchy.lms.service.ws2.LawyerPassDataServiceServiceLocator;
 
 /**
  *  律师信息 公共类
@@ -20,11 +20,11 @@ import com.lenchy.lms.service.ws.LawyerDataServiceServiceLocator;
  */
 public class DataUtils {
 	
-	private static ILawyerDataService service;
+	private static ILawyerPassDataService service;
 	
 	static{
 		try {
-			service = new LawyerDataServiceServiceLocator().getLawyerDataServicePort();
+			service = new LawyerPassDataServiceServiceLocator().getLawyerPassDataServicePort();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}

@@ -46,7 +46,7 @@ public class QuartzJob {
 		int pageNum = 0;
 		String dateStr = DateUtils.getFormatDate(DateUtils.getDateByDay(new Date(), -1));
 		while(true){
-			List<com.lenchy.lms.service.ws.Lawyer> lawyers  = DataUtils.searchLawyers(dateStr, pageNum, pageSize);
+			List<com.lenchy.lms.service.ws2.Lawyer> lawyers  = DataUtils.searchLawyers(dateStr, pageNum, pageSize);
 			if(lawyers.size() == 0){
 				break;
 			}
@@ -63,7 +63,7 @@ public class QuartzJob {
 		int pageNum = 0;
 		String dateStr = DateUtils.getFormatDate(DateUtils.getDateByDay(new Date(), -1));
 		while(true){
-			List<com.lenchy.lms.service.ws.LawFirm> lawfirms  = DataUtils.searchLawFirms(dateStr, pageNum, pageSize);
+			List<com.lenchy.lms.service.ws2.LawFirm> lawfirms  = DataUtils.searchLawFirms(dateStr, pageNum, pageSize);
 			if(lawfirms.size() == 0){
 				break;
 			}
@@ -76,9 +76,9 @@ public class QuartzJob {
 	 * @param lawyers
 	 * @return
 	 */
-	public List<cn.com.jandar.lawyer.model.Lawyer> getLawyerList(List<com.lenchy.lms.service.ws.Lawyer> lawyers){
+	public List<cn.com.jandar.lawyer.model.Lawyer> getLawyerList(List<com.lenchy.lms.service.ws2.Lawyer> lawyers){
 		List<Lawyer> result = new ArrayList<Lawyer>();
-		for(com.lenchy.lms.service.ws.Lawyer l :lawyers){
+		for(com.lenchy.lms.service.ws2.Lawyer l :lawyers){
 			Lawyer lawyer = new Lawyer();
 			lawyer.setId(l.getId());
 			lawyer.setAddress(l.getAddress());
@@ -113,9 +113,9 @@ public class QuartzJob {
 	 * @param lawfirms
 	 * @return
 	 */
-	public List<LawFirm> getLawFirmList(List<com.lenchy.lms.service.ws.LawFirm> lawfirms){
+	public List<LawFirm> getLawFirmList(List<com.lenchy.lms.service.ws2.LawFirm> lawfirms){
 		List<LawFirm> result = new ArrayList<LawFirm>();
-		for(com.lenchy.lms.service.ws.LawFirm l : lawfirms){
+		for(com.lenchy.lms.service.ws2.LawFirm l : lawfirms){
 			LawFirm lawfirm = new LawFirm();
 			lawfirm.setAddress(l.getAddress());
 			lawfirm.setApproveDate(l.getApproveDate());
